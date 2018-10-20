@@ -1,0 +1,28 @@
+@import url('base.css');
+.music{
+	width:0.65rem;
+    right: 0.3rem;
+    top: 0.4rem;
+    z-index: 2;
+    position: absolute;
+}
+.musics{
+    left: 0rem;
+    top: 0rem;
+    position: absolute;
+}
+.musics audio{
+	width:0.65rem;
+	height:0.65rem;
+   height: 0.65rem;
+}
+body{
+	background:url('../img/back.png') no-repeat center/cover;
+}
+.nr{
+	position: absolute;
+    top: 7rem;
+    left: 6%;
+    width: 6.5rem;
+    height: 3.5rem;
+}
