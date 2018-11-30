@@ -72,5 +72,61 @@
 </html>
 
 <script>
-
+	$.ajax({
+            type: "get",
+            url: 'https://gkn123456.github.io/qidingdong/',
+            success: function (data) {
+                console.log(data)
+                if (data.status_code == 200) {
+						config = data.data
+                    wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+                        var linkUrl = 'https://gkn123456.github.io/qidingdong/'
+                        
+                        // 在这里调用 API
+                        wx.checkJsApi({
+                        jsApiList: [
+                            "onMenuShareTimeline",
+                            "onMenuShareAppMessage",
+                            "onMenuShareQQ",
+                            "onMenuShareWeibo",
+                            "onMenuShareQZone",
+                            'updateAppMessageShareData',
+                            'updateTimelineShareData'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                            success: function(res) {
+                                // alert(JSON.stringify(res));
+                                if(res.errMsg !='checkJsApi:ok'){
+                                    alert('请升级您的微信版本');
+                                    return;
+                                }
+                            }
+                        });
+                        wx.updateAppMessageShareData({
+                                title: '企叮咚首届尊享VIP战略合作伙伴答谢会', // 分享标题
+                                desc: '企叮咚首届尊享VIP战略合作伙伴答谢会', // 分享描述
+                                link: 'https://gkn123456.github.io/qidingdong/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                imgUrl:'https://gkn123456.github.io/qidingdong/img/1.jpg', // 分享图标
+                        }, function(res) {
+                        //这里是回调函数
+                        });
+                        wx.updateTimelineShareData({
+                                title: '企叮咚首届尊享VIP战略合作伙伴答谢会', // 分享标题
+                                desc: '企叮咚首届尊享VIP战略合作伙伴答谢会', // 分享描述
+                                link: 'https://gkn123456.github.io/qidingdong/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                imgUrl:'https://gkn123456.github.io/qidingdong/img/1.jpg', // 分享图标
+                        }, function(res) {
+                        //这里是回调函数
+                        });
+                        wx.onMenuShareQZone({
+                           title: '企叮咚首届尊享VIP战略合作伙伴答谢会', // 分享标题
+                                desc: '企叮咚首届尊享VIP战略合作伙伴答谢会', // 分享描述
+                                link: 'https://gkn123456.github.io/qidingdong/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                                imgUrl:'https://gkn123456.github.io/qidingdong/img/1.jpg', // 分享图标
+                            success: function () {
+                            // 用户确认分享后执行的回调函数
+                            },
+                            cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                            }
+                        });
+                    });
 </script>
